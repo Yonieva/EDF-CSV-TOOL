@@ -96,14 +96,6 @@ edf-csv-tool/
 ├── LICENSE
 ```
 
----
-
-## 📸 Aperçu
-
-*(Ajoute ici un screenshot de ton terminal pour faire pro 🔥)*
-
----
-
 ## ⚠️ Limitations
 
 * Fonctionne principalement sur Windows
