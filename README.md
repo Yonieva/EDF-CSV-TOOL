@@ -1,5 +1,13 @@
 # ⚡ EDF CSV Tool
 
+<img width="1157" height="585" alt="Capture d’écran 2026-04-30 115015" src="https://github.com/user-attachments/assets/9328689f-7e3a-4460-a80b-0c49dc223a4b" />
+<img width="1078" height="793" alt="Capture d’écran 2026-04-30 115128" src="https://github.com/user-attachments/assets/e56339ab-031d-43d8-a5f7-77fd3ae243f1" />
+
+
+
+
+
+
 Outil en C++ permettant de consulter, analyser et rechercher facilement dans des fichiers CSV de facturation EDF, directement depuis le terminal.
 
 ---
