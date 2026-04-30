@@ -129,6 +129,6 @@ Projet personnel – outil de traitement de données EDF
 
 ## 💡 Objectif
 
-Ce projet a été réalisé dans le cadre d’un stage à la communauté de commune Albères, Côte Vermeille, Illibèris et l'apprentissage en développement C/C++ et manipulation de données.
+Ce projet a été réalisé dans le cadre d’un stage à la communauté de communes Albères, Côte Vermeille, Illibèris et l'apprentissage en développement C/C++ et manipulation de données.
 
 ---
