@@ -1,42 +1,80 @@
 # ⚡ EDF CSV Tool
 
-<img width="1157" height="585" alt="Capture d’écran 2026-04-30 115015" src="https://github.com/user-attachments/assets/9328689f-7e3a-4460-a80b-0c49dc223a4b" />
+<img width="1157" alt="EDF CSV Tool" src="https://github.com/user-attachments/assets/9328689f-7e3a-4460-a80b-0c49dc223a4b" />
+
+<p align="center">
 
 
-
-Outil en C++ permettant de consulter, analyser et rechercher facilement dans des fichiers CSV de facturation EDF, directement depuis le terminal.
+</p>
 
 ---
 
 ## 📌 Description
 
-Ce logiciel a été développé pour simplifier la lecture et l’exploitation de fichiers CSV complexes (factures EDF), sans passer par Excel.
+EDF CSV Tool est une application développée en C++ permettant d’explorer, analyser et exploiter rapidement des fichiers CSV de facturation EDF directement depuis un terminal Windows.
 
-Il permet notamment de :
+Le projet a progressivement évolué d’un simple lecteur CSV vers un véritable outil d’analyse et de navigation destiné à faciliter le traitement de données volumineuses sans dépendre d’Excel.
 
-* Charger un fichier CSV via une interface Windows
-* Explorer les données rapidement
-* Rechercher des sites ou factures
-* Obtenir des statistiques globales
+Développé dans le cadre d’un stage à la communauté de communes Albères, Côte Vermeille, Illibèris.
 
 ---
-<img width="1078" height="793" alt="Capture d’écran 2026-04-30 115128" src="https://github.com/user-attachments/assets/e56339ab-031d-43d8-a5f7-77fd3ae243f1" />
+
+<img width="1201" alt="Dashboard EDF CSV Tool" src="https://github.com/user-attachments/assets/741d9acb-bfb0-4362-87d5-20272755d480" />
+
+---
 
 ## 🚀 Fonctionnalités
 
-* 📂 Ouverture de fichier CSV via fenêtre Windows
-* 🔍 Recherche par :
+### 📂 Gestion des fichiers CSV
+
+* Ouverture de fichiers via fenêtre Windows
+* Lecture rapide de fichiers CSV volumineux
+* Parsing et structuration des données
+
+### 🔍 Recherche et navigation
+
+* Recherche par :
 
   * Nom de site
   * Adresse
   * Référence d’acheminement
-* 📊 Dashboard global :
+* Navigation simplifiée entre les différents sites
+* Menus dynamiques en console
+
+### 📊 Analyse des données
+
+* Dashboard global :
 
   * Nombre total de lignes
   * Nombre de sites uniques
-  * Période des factures (min → max)
-* 🧠 Analyse des données directement dans le terminal
-* 🖥️ Interface simple et rapide (console)
+  * Nombre de factures
+  * Périodes disponibles
+* Exploration détaillée des factures par site
+* Bilans mensuels et annuels
+
+### 🖥️ Interface console
+
+* Interface terminal interactive
+* Menus colorés
+* Navigation rapide et légère
+
+---
+
+<img width="1035" alt="Analyse EDF CSV Tool" src="https://github.com/user-attachments/assets/5be52c02-aa24-4633-bd93-8f0313aa73d0" />
+
+---
+
+## 🧠 Évolution du projet
+
+Le projet a progressivement intégré :
+
+* Une architecture plus modulaire
+* Des menus dynamiques par site
+* Des statistiques globales avancées
+* Des outils d’analyse de consommation et de facturation
+* Une meilleure gestion des recherches et de l’affichage console
+
+L’objectif est de continuer à faire évoluer l’outil vers une solution toujours plus rapide et pratique pour l’exploitation de données métier.
 
 ---
 
@@ -54,20 +92,20 @@ Le fichier doit contenir les colonnes suivantes :
 
 ## 🛠️ Installation
 
-### 1. Cloner le projet
+### 1️⃣ Cloner le projet
 
 ```bash
 git clone https://github.com/Yonieva/edf-csv-tool.git
 cd edf-csv-tool
 ```
 
-### 2. Compiler (Windows - MinGW)
+### 2️⃣ Compiler (Windows - MinGW)
 
 ```bash
 g++ main.cpp -o edf_tool
 ```
 
-### 3. Lancer
+### 3️⃣ Lancer l'application
 
 ```bash
 edf_tool.exe
@@ -75,15 +113,24 @@ edf_tool.exe
 
 ---
 
+<img width="1131" alt="Navigation EDF CSV Tool" src="https://github.com/user-attachments/assets/b3467e61-5640-46ac-be7b-c984e032669c" />
+
+---
+
 ## ▶️ Utilisation
 
 1. Lancer le programme
 2. Sélectionner un fichier CSV
-3. Naviguer dans le menu :
+3. Naviguer dans les menus :
 
-   * Rechercher
-   * Afficher les statistiques
-   * Explorer les données
+   * Rechercher un site
+   * Consulter les factures
+   * Voir les statistiques
+   * Explorer les bilans
+
+---
+
+<img width="381" alt="Menu EDF CSV Tool" src="https://github.com/user-attachments/assets/edba3960-a593-49d3-9a6f-d16c40a54b96" />
 
 ---
 
@@ -96,17 +143,20 @@ edf-csv-tool/
 ├── LICENSE
 ```
 
-## ⚠️ Limitations
+---
 
-* Fonctionne principalement sur Windows
-* Nécessite un format CSV conforme
-* Interface uniquement en ligne de commande
+## ⚠️ Limitations actuelles
+
+* Compatible principalement Windows
+* Interface console uniquement
+* Dépend d’un format CSV précis
+* Pas encore de version graphique
 
 ---
 
 ## 📜 Licence
 
-Ce projet est distribué sous licence.
+Projet distribué sous licence GNU GPL v3.
 
 Voir le fichier `LICENSE` pour plus d’informations.
 
@@ -114,13 +164,19 @@ Voir le fichier `LICENSE` pour plus d’informations.
 
 ## 👤 Auteur
 
-Yoan ONIEVA
-Projet personnel – outil de traitement de données EDF
+**Yoan ONIEVA**
+
+Projet personnel développé autour :
+
+* du traitement de données
+* du développement C/C++
+* de l’analyse de fichiers métier
+* de l’optimisation d’outils internes
 
 ---
 
-## 💡 Objectif
+## 💡 Objectif du projet
 
-Ce projet a été réalisé dans le cadre d’un stage à la communauté de communes Albères, Côte Vermeille, Illibèris et l'apprentissage en développement C/C++ et manipulation de données.
+Créer un outil léger, rapide et pratique permettant d’exploiter efficacement des données de facturation EDF sans outils lourds ou solutions propriétaires.
 
 ---
