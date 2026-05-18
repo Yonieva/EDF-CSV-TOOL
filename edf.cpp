@@ -302,8 +302,8 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
     sort(topSites.begin(), topSites.end(), [](auto& a, auto& b) {
         return a.second > b.second;
     });
-
-    setColor(14);
+/*
+    setColor(9);
     cout << "                                    &&&&                                                        \n";
     cout << "                          &&    &&&&&&&&&&                                                      \n";
     cout << "                       &&& && &&&&&&&&&&&&&                                                     \n";
@@ -324,6 +324,80 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
     cout << "                                    &&&&&&&&&&&    &&&      &&&&&&&&&&&&&                       \n";
     cout << "                                      &&&&&&&&        &&      &&&&&&&&&&                        \n";
     cout << "                                                        &X      :&&&&&&                         \n";
+*/
+    setColor(9);
+    cout << "                                    &&&&                                                        \n";
+    cout << "                          &&";                                                                  
+    setColor(13);
+    cout << "    &&&&&&&&&&                                                      \n";
+    setColor(9);
+    cout << "                       &&& &&";
+    setColor(13);
+    cout << " &&&&&&&&&&&&&                                                     \n";
+    setColor(9);
+    cout << "                     &&";
+    setColor(13);
+    cout << "     &&&&&&&&&&&&&&&                                                     \n";
+    setColor(9);
+    cout << "                       &&";
+    setColor(13);
+    cout << "    &&&&&&&&&&&&&&&                                                    \n";
+    setColor(9);
+    cout << "                        &&";
+    setColor(13);
+    cout << "    &&&&&&&&&&&";
+    setColor(9);
+    cout << "   &&&&&&&&&                                                                                    \n";
+    cout << "                          &&";
+    setColor(13); 
+    cout << "   &&&&&&&&";
+    setColor(9);
+    cout << "            &&             COMMUNAUTE DES COMMUNES       \n";
+    cout << "                           &&                      &&             ALBERES                       \n";
+    cout << "                           &&                      &&             COTE VERMEILLE                \n";
+    cout << "                         &&&                        &             ILLIBERIS                     \n";
+    cout << "                     &&&&                            &                                          \n";
+    cout << "                     &                                 &&                                       \n";
+    cout << "                     &";
+    setColor(14);
+    cout << "                  &&";
+    setColor(9);
+    cout << "                &&&&&                                                                           \n";
+    cout << "                     &";
+    setColor(14);
+    cout << "              &&&&&&&&&&&";
+    setColor(9);
+    cout << "                  &&                                                                            \n";
+    cout << "                     &&&";
+    setColor(14);
+    cout << "          &&&&&&&&&&&&&";
+    setColor(11);
+    cout << "             &&&&&&&&&&&                                                                        \n";
+    setColor(14);
+    cout << "                            &&&&&&&&&&&&&&&&&&&&";
+    setColor(11);
+    cout << "         &&&&&&&&&&&&&&&                                                                        \n";
+    setColor(14);
+    cout << "                                  &&&&&&&&&&&&&&&&";
+    setColor(11);
+    cout << "         &&&&&&&&&&&&&&&                                                                        \n";
+    setColor(14);
+    cout << "                                    &&&&&&&&&&&";
+    setColor(9);
+    cout << "    &&&";
+    setColor(11);
+    cout << "      &&&&&&&&&&&&&                                                                             \n";
+    setColor(14);
+    cout << "                                      &&&&&&&&";
+    setColor(9);
+    cout << "        &&";
+    setColor(11);
+    cout << "      &&&&&&&&&&                        \n";
+    setColor(9);
+    cout << "                                                        &&";
+    setColor(11);
+    cout << "      &&&&&&&                         \n";
+    setColor(14);
 
     cout << "\n\n==========================================================================================\n";
     cout << " _____  _    ____  _     _____    _   _   _   ____  _____   ____   ___  ____  ____        \n";
@@ -440,6 +514,7 @@ void exporterFacturesSite(const vector<Facture>& factures, const string& ref) {
     setColor(10);
     cout << "\nExport cree : " << filename << endl;
     setColor(7);
+    pauseTerminal();
 }
 
 void exporterBilanMensuelSite(const vector<Facture>& factures, const string& ref) {
@@ -496,6 +571,7 @@ void exporterBilanMensuelSite(const vector<Facture>& factures, const string& ref
     setColor(10);
     cout << "\nExport cree : " << filename << endl;
     setColor(7);
+    pauseTerminal();
 }
 
 void exporterBilanAnnuelSite(const vector<Facture>& factures, const string& ref) {
@@ -552,13 +628,14 @@ void exporterBilanAnnuelSite(const vector<Facture>& factures, const string& ref)
     setColor(10);
     cout << "\nExport cree : " << filename << endl;
     setColor(7);
+    pauseTerminal();
 }
 
 void demanderExportFactures(const vector<Facture>& factures, const string& ref) {
     setColor(13);
-    cout << "\nTaper 1 pour exporter en CSV\n";
-    setColor(5);
-    cout << "Taper un autre chiffre pour Retour\n";
+    cout << "\n1 - Expoter la liste en CSV\n";
+    setColor(7);
+    cout << "2 - Retour\n";
 
     setColor(10);
     cout << "\nVotre choix : ";
@@ -566,18 +643,25 @@ void demanderExportFactures(const vector<Facture>& factures, const string& ref) 
 
     int choix = readIntSafe();
 
-    if (choix == 1) {
-        exporterFacturesSite(factures, ref);
+     while (choix < 1 || choix > 2) {
+        setColor(12);
+        cout << "Choix invalide. Veuillez entrer 1 ou 2 : ";
+        setColor(7);
+        choix = readIntSafe();
     }
-    else
+
+    if (choix == 1)
+        exporterFacturesSite(factures, ref);
+
+    if (choix == 2)
         return;
 }
 
 void demanderExportBilanMensuel(const vector<Facture>& factures, const string& ref) {
     setColor(13);
-    cout << "\nTaper 1 pour exporter en CSV\n";
-    setColor(5);
-    cout << "Taper un autre chiffre pour Retour\n";
+    cout << "\n1 - Expoter le bilan mensuel en CSV\n";
+    setColor(7);
+    cout << "2 - Retour\n";
 
     setColor(10);
     cout << "\nVotre choix : ";
@@ -585,18 +669,25 @@ void demanderExportBilanMensuel(const vector<Facture>& factures, const string& r
 
     int choix = readIntSafe();
 
-    if (choix == 1) {
-        exporterBilanMensuelSite(factures, ref);
+    while (choix < 1 || choix > 2) {
+        setColor(12);
+        cout << "Choix invalide. Veuillez entrer 1 ou 2 : ";
+        setColor(7);
+        choix = readIntSafe();
     }
-    else
+    
+    if (choix == 1)
+        exporterBilanMensuelSite(factures, ref);
+
+    if (choix == 2)
         return;
 }
 
 void demanderExportBilanAnnuel(const vector<Facture>& factures, const string& ref) {
     setColor(13);
     cout << "\n1 - Exporter le bilan annuel en CSV\n";
-    setColor(5);
-    cout << "Taper un autre chiffre pour Retour\n";
+    setColor(7);
+    cout << "2 - Retour\n";
 
     setColor(10);
     cout << "\nVotre choix : ";
@@ -604,10 +695,17 @@ void demanderExportBilanAnnuel(const vector<Facture>& factures, const string& re
 
     int choix = readIntSafe();
 
+    while (choix < 1 || choix > 2) {
+        setColor(12);
+        cout << "Choix invalide. Veuillez entrer 1 ou 2 : ";
+        setColor(7);
+        choix = readIntSafe();
+    }
+
     if (choix == 1) {
         exporterBilanAnnuelSite(factures, ref);
     }
-    else
+    if (choix == 2)
         return;
 }
 
@@ -811,19 +909,16 @@ void menuSite(const vector<Facture>& factures, const string& ref) {
             case 1:
                 afficherFacturesSite(factures, ref);
                 demanderExportFactures(factures, ref);
-                pauseTerminal();
                 break;
 
             case 2:
                 afficherBilanMensuelSite(factures, ref);
                 demanderExportBilanMensuel(factures, ref);
-                pauseTerminal();
                 break;
 
             case 3:
                 afficherBilanAnnuelSite(factures, ref);
                 demanderExportBilanAnnuel(factures, ref);
-                pauseTerminal();
                 break;
 
             case 4:
