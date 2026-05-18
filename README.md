@@ -1,5 +1,5 @@
 # ⚡ EDF CSV Tool
-<img width="862" height="510" alt="Capture d’écran 2026-05-13 091500" src="https://github.com/user-attachments/assets/551dec14-4b83-4405-a7b6-356254019b6e" />
+<img width="1048" height="472" alt="image" src="https://github.com/user-attachments/assets/d819ed11-6464-4111-96e2-3fe0f5f039e3" />
 
 
 <p align="center">
