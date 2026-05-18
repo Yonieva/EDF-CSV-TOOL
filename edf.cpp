@@ -302,29 +302,7 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
     sort(topSites.begin(), topSites.end(), [](auto& a, auto& b) {
         return a.second > b.second;
     });
-/*
-    setColor(9);
-    cout << "                                    &&&&                                                        \n";
-    cout << "                          &&    &&&&&&&&&&                                                      \n";
-    cout << "                       &&& && &&&&&&&&&&&&&                                                     \n";
-    cout << "                     &&     :&&&&&&&&&&&&&&                                                     \n";
-    cout << "                       &&    &&&&&&&&&&&&&&&                 COMMUNAUTE DES COMMUNES            \n";
-    cout << "                        &&    &&&&&&&&&&&   &&&&&&&&&                                           \n";
-    cout << "                          &&   &&&&&&&&            &&                                           \n";
-    cout << "                           &&                      &&             ALBERES                       \n";
-    cout << "                           &&                      x&             COTE VERMEILLE                \n";
-    cout << "                         &&&                        &             ILLIBERIS                     \n";
-    cout << "                     &&&&                            &                                          \n";
-    cout << "                     &                                 &&                                       \n";
-    cout << "                     &                 &&                ;&&&&                                  \n";
-    cout << "                     &             &&&&&&&&&&;                  &&                              \n";
-    cout << "                     &&&          &&&&&&&&&&&&&             +&&&&&&&&&&                         \n";
-    cout << "                            &&&&&&&&&&&&&&&&&&&&           &&&&&&&&&&&&&&&                      \n";
-    cout << "                                  &&&&&&&&&&&&&&&&         &&&&&&&&&&&&&&&                      \n";
-    cout << "                                    &&&&&&&&&&&    &&&      &&&&&&&&&&&&&                       \n";
-    cout << "                                      &&&&&&&&        &&      &&&&&&&&&&                        \n";
-    cout << "                                                        &X      :&&&&&&                         \n";
-*/
+
     setColor(9);
     cout << "                                    &&&&                                                        \n";
     cout << "                          &&";                                                                  
