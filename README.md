@@ -25,7 +25,8 @@ Développé dans le cadre d’un stage à la communauté de communes Albères, C
 
 ---
 
-<img width="1201" alt="Dashboard EDF CSV Tool" src="https://github.com/user-attachments/assets/741d9acb-bfb0-4362-87d5-20272755d480" />
+<img width="912" height="427" alt="1" src="https://github.com/user-attachments/assets/128b0b97-31a9-4969-89a2-bf1b623e684a" />
+
 
 ---
 
@@ -66,7 +67,8 @@ Développé dans le cadre d’un stage à la communauté de communes Albères, C
 
 ---
 
-<img width="1035" alt="Analyse EDF CSV Tool" src="https://github.com/user-attachments/assets/5be52c02-aa24-4633-bd93-8f0313aa73d0" />
+<img width="733" height="258" alt="image" src="https://github.com/user-attachments/assets/5616323b-7a81-4f6d-bcac-0e5de339a066" />
+
 
 ---
 
@@ -119,7 +121,8 @@ edf_tool.exe
 
 ---
 
-<img width="1131" alt="Navigation EDF CSV Tool" src="https://github.com/user-attachments/assets/b3467e61-5640-46ac-be7b-c984e032669c" />
+<img width="728" height="653" alt="image" src="https://github.com/user-attachments/assets/a35a03dd-08e7-4f96-8218-1737eb29c269" />
+
 
 ---
 
