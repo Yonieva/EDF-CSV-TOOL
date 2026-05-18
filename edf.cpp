@@ -57,8 +57,15 @@ string ouvrirFenetreFichier() {
     return "";
 }
 
+void pauseMenuTerminal() {
+    setColor(2);
+    cout << "\n                        Appuyez sur la touche 'ENTREE' pour choisir un fichier Excel EDF";
+    setColor(7);
+    cin.get();
+}
+
 void pauseTerminal() {
-    cout << "\n                         Appuyez sur la touche 'ENTREE' pour continuer...";
+    cout << "\n                                Appuyez sur la touche 'ENTREE' pour continuer...";
     cin.get();
 }
 
@@ -303,8 +310,9 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
         return a.second > b.second;
     });
 
-    setColor(9);
+    setColor(13);
     cout << "                                    &&&&                                                        \n";
+    setColor(9);
     cout << "                          &&";                                                                  
     setColor(13);
     cout << "    &&&&&&&&&&                                                      \n";
@@ -344,8 +352,9 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
     cout << "                     &";
     setColor(14);
     cout << "              &&&&&&&&&&&";
-    setColor(9);
+    setColor(11);
     cout << "                  &&                                                                            \n";
+    setColor(9);
     cout << "                     &&&";
     setColor(14);
     cout << "          &&&&&&&&&&&&&";
@@ -374,27 +383,18 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
     setColor(9);
     cout << "                                                        &&";
     setColor(11);
-    cout << "      &&&&&&&                         \n";
-    setColor(14);
-
-    cout << "\n\n==========================================================================================\n";
-    cout << " _____  _    ____  _     _____    _   _   _   ____  _____   ____   ___  ____  ____        \n";
-    cout << "|_   _|/ \\  | __ )| |   | ____|  / \\ | | | | |  _ \\| ____| | __ ) / _ \\|  _ \\|  _ \\ \n";
-    cout << "  | | / _ \\ |  _ \\| |   |  _|   / _ \\| | | | | | | |  _|   |  _ \\| | | | |_) | | | |  \n";
-    cout << "  | |/ ___ \\| |_) | |___| |___ / ___ \\ |_| | | |_| | |___  | |_) | |_| |  _ <| |_| |    \n";
-    cout << "  |_/_/   \\_\\____/|_____|_____/_/   \\_\\___/  |____/|_____| |____/ \\___/|_| \\_\\____/\n\n";
-    cout << "==========================================================================================\n";
-
+    cout << "      &&&&&&&                         \n\n\n";
     setColor(10);
+    cout << "================================================================================\n";
     cout << fixed << setprecision(2);
-    cout << "Nombre total de lignes/factures : " << factures.size() << endl;
-    cout << "Nombre de sites uniques         : " << sites.size() << endl;
-    cout << "Periode                         : " << dateMin << " -> " << dateMax << endl;
-    cout << "Consommation totale             : " << totalConso << " kWh" << endl;
-    cout << "Montant total TTC               : " << totalTTC << " euros" << endl;
-
+    cout << "|| Nombre total de lignes/factures : " << factures.size() <<"                                     ||"<< endl;
+    cout << "|| Nombre de sites uniques         : " << sites.size() <<"                                      ||"<< endl;
+    cout << "|| Periode                         : " << dateMin << " -> " << dateMax <<"                 ||"<< endl;
+    cout << "|| Consommation totale             : " << totalConso << " kWh" <<"                          ||"<< endl;
+    cout << "|| Montant total TTC               : " << totalTTC << " euros" <<"                         ||"<< endl;
+    cout << "================================================================================\n\n";
     setColor(14);
-    cout << "==========================================================================================\n";
+    cout << "================================================================================\n\n";
     cout << "                              Top sites par montant TTC\n\n";
     setColor(7);
 
@@ -413,14 +413,14 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
             setColor(7);
             cout << it->nom_site
                  << " | " << it->adresse_site
-                 << " | " << fixed << setprecision(2) << item.second << " euros TTC\n";
+                 << " | " << fixed << setprecision(2) << item.second << " euros TTC\n\n";
         }
 
         count++;
     }
 
     setColor(14);
-    cout << "==========================================================================================\n\n";
+    cout << "=================================================================================\n\n";
     setColor(7);
 }
 
@@ -908,12 +908,15 @@ void menuSite(const vector<Facture>& factures, const string& ref) {
 }
 
 void rechercherSite(const vector<Facture>& factures) {
-    setColor(14);
-    cout << " ____  _____ ____ _   _ _____ ____   ____ _   _ _____   ____  _____   ____ ___ _____ _____ \n";
-    cout << "|  _ \\| ____/ ___| | | | ____|  _ \\ / ___| | | | ____| |  _ \\| ____| / ___|_ _|_   _| ____|\n";
-    cout << "| |_) |  _|| |   | |_| |  _| | |_) | |   | |_| |  _|   | | | |  _|   \\___ \\| |  | | |  _|  \n";
-    cout << "|  _ <| |__| |___|  _  | |___|  _ <| |___|  _  | |___  | |_| | |___   ___) | |  | | | |___ \n";
-    cout << "|_| \\_\\_____\\____|_| |_|_____|_|  \\_\\____|_| |_|_____| |____/|_____| |____/___| |_| |_____|\n\n";
+    setColor(9);
+    cout << "                             ,,                                ,,               \n";
+    cout << "`7MM'''Mq.                 `7MM                              `7MM               \n";
+    cout << "  MM   `MM.                  MM                                MM               \n";
+    cout << "  MM   ,M9  .gP'Ya   ,p6'bo  MMpMMMb.  .gP'Ya `7Mb,od8 ,p6'bo  MMpMMMb.  .gP'Ya \n";
+    cout << "  MMmmdM9  ,M'   Yb 6M'  OO  MM    MM ,M'   Yb  MM' ''6M'  OO  MM    MM ,M'   Yb\n";
+    cout << "  MM  YM.  8M'''''' 8M       MM    MM 8M''''''  MM    8M       MM    MM 8M''''''\n";
+    cout << "  MM   `Mb.YM.    , YM.    , MM    MM YM.    ,  MM    YM.    , MM    MM YM.    ,\n";
+    cout << ".JMML. .JMM.`Mbmmd   YMbmd. JMML  JMML.`Mbmmd .JMML.   YMbmd .JMML  JMML. Mbmmd  \n";
     setColor(7);
 
     cout << "\nExemples : forage, step, 66200, elne, pompage... (0 pour retour)\n";
@@ -926,7 +929,7 @@ void rechercherSite(const vector<Facture>& factures) {
 
     while (input.empty()) {
         setColor(12);
-        cout << "Recherche vide. Veuillez saisir un mot-cle ou 0 pour retour : ";
+        cout << "Recherche vide. Veuillez saisir un mot-cle existant ou 0 pour retour : ";
         setColor(7);
         getline(cin, input);
     }
@@ -952,7 +955,7 @@ void rechercherSite(const vector<Facture>& factures) {
         setColor(7);
         pauseTerminal();
         clearScreen();
-        return;
+        return(rechercherSite(factures));
     }
 
     cout << "\nSites trouves :\n\n";
@@ -1011,17 +1014,21 @@ void afficherAccueil(const vector<Facture>& factures) {
 
         afficherTableauDeBord(factures);
 
-        setColor(14);
-        cout <<"                              __  __ _____ _   _ _   _        \n";
-        cout <<"                             |  \\/  | ____| \\ | | | | |       \n";
-        cout <<"                             | |\\/| |  _| |  \\| | | | |       \n";
-        cout <<"                             | |  | | |___| |\\  | |_| |       \n";
-        cout <<"                             |_|  |_|_____|_| \\_|\\___/        \n\n";
+        setColor(9);
+        cout << "                 `7MMM.     ,MMF'                             \n";
+        cout << "                   MMMb    dPMM                               \n";
+        cout << "                   M YM   ,M MM  .gP'Ya `7MMpMMMb.`7MM  `7MM  \n";
+        cout << "                   M  Mb  M' MM ,M'   Yb  MM    MM  MM    MM  \n";
+        cout << "                   M  YM.P'  MM 8M''''''  MM    MM  MM    MM  \n";
+        cout << "                   M  `YM'   MM YM.    ,  MM    MM  MM    MM  \n";
+        cout << "                 .JML. `'  .JMML.`Mbmmd'.JMML  JMML.`Mbod'YML.\n\n";
         setColor(7);
-
         cout << "                          1 - Rechercher un site\n";
         cout << "                          2 - Lister tous les sites\n";
         cout << "                          3 - Quitter\n";
+        setColor(14);
+        cout << "=================================================================================\n";
+        setColor(7);
 
         setColor(10);
         cout << "\nVotre choix : ";
@@ -1081,12 +1088,14 @@ void draw_logo() {
     cout << "                ..************.       +*******-..                                               \n";
     cout << "                +**********-.       *********..                                                 \n";
     cout << "                .+*******=...       ...*****+.                                                  \n\n";
+    setColor(9);
+    cout << "\n                                        Veuillez agrandir cette fenetre\n";
     setColor(7);
 }
 
 int main() {
     draw_logo();
-    pauseTerminal();
+    pauseMenuTerminal();
 
     string chemin = ouvrirFenetreFichier();
 
