@@ -107,13 +107,22 @@ vector<string> splitCSV(const string& ligne, char sep = ';') {
     string cell;
     bool inQuotes = false;
 
-    for (char c : ligne) {
+    for (size_t i = 0; i < ligne.size(); i++) {
+        char c = ligne[i];
+
         if (c == '"') {
-            inQuotes = !inQuotes;
-        } else if (c == sep && !inQuotes) {
+            if (inQuotes && i + 1 < ligne.size() && ligne[i + 1] == '"') {
+                cell += '"';
+                i++;
+            } else {
+                inQuotes = !inQuotes;
+            }
+        }
+        else if (c == sep && !inQuotes) {
             result.push_back(cell);
             cell.clear();
-        } else {
+        }
+        else {
             cell += c;
         }
     }
@@ -251,6 +260,12 @@ vector<Facture> chargerCSV(const string& chemin) {
         f.ref_acheminement = nettoyer(cols[idxRef]);
         f.nom_site = nettoyer(cols[idxNom]);
         f.adresse_site = nettoyer(cols[idxAdresse]);
+        static int debugAdresse = 0;/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if (debugAdresse < 10) {
+            cout << "DEBUG adresse_site = [" << f.adresse_site << "]" << endl;
+            debugAdresse++;
+        }////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         f.date_de_debut_de_consommation = nettoyer(cols[idxDebutConso]);
         f.date_de_fin_de_consommation = nettoyer(cols[idxFinConso]);
         f.conso_elec_facturee_kwh = toDoubleSafe(cols[idxConsoElec]);
@@ -281,9 +296,29 @@ vector<Facture> sitesUniques(const vector<Facture>& factures) {
     return result;
 }
 
+
+string extraireVillageDepuisAdresse(const string& adresse) {
+
+    if (adresse.find("66700") != string::npos) return "ARGELES SUR MER";
+    if (adresse.find("66650") != string::npos) return "BANYULS SUR MER";
+    if (adresse.find("66290") != string::npos) return "CERBERE";
+    if (adresse.find("66190") != string::npos) return "COLLIOURE";
+    if (adresse.find("66200") != string::npos) return "ELNE";
+    if (adresse.find("66560") != string::npos) return "ORTAFFA";
+    if (adresse.find("66660") != string::npos) return "PORT VENDRES";
+    if (adresse.find("66620") != string::npos) return "BROUILLA";
+    if (adresse.find("66670") != string::npos) return "BAGES";
+
+    if (adresse.find("66690") != string::npos) return "SECTEUR 66690";
+    if (adresse.find("66740") != string::npos) return "SECTEUR 66740";
+
+    return "INCONNU";
+}
+
 void afficherTableauDeBord(const vector<Facture>& factures) {
     set<string> sites;
     map<string, double> totalTtcParSite;
+    map<string, double> totalTtcParVillage;
 
     string dateMin = "9999-99-99";
     string dateMax = "0000-00-00";
@@ -294,7 +329,8 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
     for (const auto& f : factures) {
         sites.insert(f.ref_acheminement);
         totalTtcParSite[f.ref_acheminement] += f.montant_total_ttc_euros;
-
+        string village = extraireVillageDepuisAdresse(f.adresse_site);
+        totalTtcParVillage[village] += f.montant_total_ttc_euros;
         if (!f.date_facture.empty()) {
             dateMin = min(dateMin, f.date_facture);
             dateMax = max(dateMax, f.date_facture);
@@ -396,47 +432,90 @@ void afficherTableauDeBord(const vector<Facture>& factures) {
     setColor(14);
     cout << "================================================================================\n\n";
     cout << "                              Top sites par montant TTC\n\n";
+
     setColor(7);
 
     int count = 0;
+
     for (auto& item : topSites) {
+
         if (count >= 5) break;
 
         string ref = item.first;
+
         auto it = find_if(factures.begin(), factures.end(), [&](const Facture& f) {
             return f.ref_acheminement == ref;
         });
 
         if (it != factures.end()) {
+
             setColor(10);
             cout << count + 1 << ". ";
             setColor(7);
+
             cout << it->nom_site
-                 << " | " << it->adresse_site
-                 << " | " << fixed << setprecision(2) << item.second << " euros TTC\n\n";
+                << " | "
+                << fixed << setprecision(2)
+                << item.second
+                << " euros TTC\n";
         }
 
         count++;
     }
 
-    setColor(14);
-    cout << "=================================================================================\n\n";
-    setColor(7);
-}
+    vector<pair<string, double>> topVillages(
+        totalTtcParVillage.begin(),
+        totalTtcParVillage.end()
+    );
 
-string nomFichierSafe(string txt) {
-    for (char& c : txt) {
-        if (
-            c == ' ' || c == '/' || c == '\\' || c == ':' ||
-            c == '*' || c == '?' || c == '"' || c == '<' ||
-            c == '>' || c == '|'
-        ) {
-            c = '_';
-        }
+    sort(topVillages.begin(), topVillages.end(), [](auto& a, auto& b) {
+        return a.second > b.second;
+    });
+
+    setColor(14);
+
+    cout << "\n================================================================================\n\n";
+    cout << "                           Top villages par montant TTC\n\n";
+
+    setColor(7);
+
+    int countVillage = 0;
+
+    for (auto& item : topVillages) {
+
+        if (countVillage >= 5) break;
+
+        setColor(10);
+        cout << countVillage + 1 << ". ";
+        setColor(7);
+
+        cout << item.first
+            << " | "
+            << fixed << setprecision(2)
+            << item.second
+            << " euros TTC\n";
+
+        countVillage++;
     }
 
-    return txt;
-}
+    setColor(14);
+    cout << "\n=================================================================================\n\n";
+    setColor(7);
+    }
+
+    string nomFichierSafe(string txt) {
+        for (char& c : txt) {
+            if (
+                c == ' ' || c == '/' || c == '\\' || c == ':' ||
+                c == '*' || c == '?' || c == '"' || c == '<' ||
+                c == '>' || c == '|'
+            ) {
+                c = '_';
+            }
+        }
+
+        return txt;
+    }
 
 void exporterFacturesSite(const vector<Facture>& factures, const string& ref) {
     vector<Facture> result;
